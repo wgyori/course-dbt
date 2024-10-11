@@ -1,0 +1,17 @@
+version: 2
+
+models:
+    - name: stg_postgres__events
+      description: "Browser events done by users"
+    - name: stg_postgres__products
+      description: "Products and their price and current inventory"
+    - name: stg_postgres__order_items
+      description: "Orders and qty of product purchased"
+    - name: stg_postgres__promos
+      description: "Promotional discount details"
+    - name: stg_postgres__addresses
+      description: "Addresses of each user"
+    - name: stg_postgres__users
+      description: "User contact details"
+    - name: stg_postgres__orders
+      description: "Fact table containing order details"
