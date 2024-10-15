@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized='table'
+  )
+}}
+
 SELECT
     ADDRESS_ID
     , ADDRESS

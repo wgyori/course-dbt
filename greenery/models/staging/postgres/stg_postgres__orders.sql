@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized='table'
+  )
+}}
+
 SELECT
     ORDER_ID
     , USER_ID

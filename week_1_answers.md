@@ -1,16 +1,20 @@
-Question 1: How many users do we have?
-Answer: 130
+# Week 1 Project Answers
 
-```
+## Question 1: How many users do we have?
+### Answer: 130
+
+### Query:
+```SQL
 SELECT COUNT(DISTINCT USER_ID)
 FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__USERS
 ```
 
 
-Question 2: On average, how many orders do we receive per hour?
-Answer: 7.520833
+## Question 2: On average, how many orders do we receive per hour?
+### Answer: 7.520833
 
-```
+### Query:
+```SQL
 WITH HOURLY_ORDER_COUNT AS (
 
     SELECT 
@@ -25,10 +29,11 @@ FROM HOURLY_ORDER_COUNT
 ```
 
 
-Question 3: On average, how long does an order take from being placed to being delivered?
-Answer: 93.403279 hours
+## Question 3: On average, how long does an order take from being placed to being delivered?
+### Answer: 93.403279 hours
 
-```
+### Query:
+```SQL
 WITH DELIVER_TIME AS (
 
     SELECT 
@@ -42,10 +47,11 @@ FROM DELIVER_TIME
 ```
 
 
-Question 4: How many users have only made one purchase? Two purchases? Three+ purchases?
-Answer: One purchase: 25, Two purchases: 28 users, Three or more purchases: 71
+## Question 4: How many users have only made one purchase? Two purchases? Three+ purchases?
+### Answer: One purchase: 25, Two purchases: 28 users, Three or more purchases: 71
 
-```
+### Query:
+```SQL
 WITH USER_ORDER_COUNT AS (
     SELECT
         USER_ID
@@ -70,10 +76,12 @@ SELECT
 FROM USER_ORDER_COUNT
 ```
 
-Question 5: On average, how many unique sessions do we have per hour?
-Answer: 16.327586
 
-```
+## Question 5: On average, how many unique sessions do we have per hour?
+### Answer: 16.327586
+
+### Query:
+```SQL
 WITH HOURLY_SESSION_COUNT AS (
 
     SELECT 

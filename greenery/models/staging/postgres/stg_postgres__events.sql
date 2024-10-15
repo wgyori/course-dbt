@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized='table'
+  )
+}}
+
 SELECT
     EVENT_ID
     , SESSION_ID
