@@ -5,17 +5,17 @@
 }}
 
 SELECT
-    ORDER_ID
-    , USER_ID
-    , PROMO_ID
-    , ADDRESS_ID
-    , CREATED_AT
-    , ORDER_COST
-    , SHIPPING_COST
-    , ORDER_TOTAL
-    , TRACKING_ID
-    , SHIPPING_SERVICE
-    , ESTIMATED_DELIVERY_AT
-    , DELIVERED_AT
-    , STATUS
+    order_id
+    , user_id
+    , promo_id
+    , address_id
+    , created_at
+    , order_cost
+    , shipping_cost
+    , order_total
+    , tracking_id
+    , shipping_service
+    , estimated_delivery_at
+    , delivered_at
+    , status
 FROM {{source('postgres', 'orders')}}

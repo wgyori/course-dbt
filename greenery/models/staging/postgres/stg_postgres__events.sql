@@ -5,12 +5,12 @@
 }}
 
 SELECT
-    EVENT_ID
-    , SESSION_ID
-    , USER_ID
-    , PAGE_URL
-    , CREATED_AT
-    , EVENT_TYPE
-    , ORDER_ID
-    , PRODUCT_ID
+    event_id
+    , session_id
+    , user_id
+    , page_url
+    , created_at
+    , event_type
+    , order_id
+    , product_id
 FROM {{source('postgres', 'events')}}

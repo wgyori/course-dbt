@@ -5,8 +5,8 @@
 
 ### Query:
 ```SQL
-SELECT COUNT(DISTINCT USER_ID)
-FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__USERS
+SELECT COUNT(DISTINCT user_id)
+FROM dev_db.dbt_willgyorikraftheinzcom.stg_postgres__users
 ```
 
 
@@ -15,17 +15,17 @@ FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__USERS
 
 ### Query:
 ```SQL
-WITH HOURLY_ORDER_COUNT AS (
+WITH hourly_order_count AS (
 
     SELECT 
-        DATE_TRUNC(HOUR, CREATED_AT) AS HOUR
-        , COUNT(DISTINCT ORDER_ID) AS ORDER_COUNT
-    FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__ORDERS
+        DATE_TRUNC(hour, created_at) AS hour
+        , COUNT(DISTINCT order_id) AS order_count
+    FROM dev_db.dbt_willgyorikraftheinzcom.stg_postgres__orders
     GROUP BY ALL
 )
 
-SELECT AVG(ORDER_COUNT)
-FROM HOURLY_ORDER_COUNT
+SELECT AVG(order_count)
+FROM hourly_order_count;
 ```
 
 
@@ -34,16 +34,16 @@ FROM HOURLY_ORDER_COUNT
 
 ### Query:
 ```SQL
-WITH DELIVER_TIME AS (
+WITH deliver_time AS (
 
     SELECT 
-        ORDER_ID
-        , TIMEDIFF(HOUR, CREATED_AT, DELIVERED_AT) AS HOUR_DIFF
-    FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__ORDERS
+        order_id
+        , TIMEDIFF(hour, created_at, delivered_at) AS hour_diff
+    FROM dev_db.dbt_willgyorikraftheinzcom.stg_postgres__orders
 )
 
-SELECT AVG(HOUR_DIFF)
-FROM DELIVER_TIME
+SELECT AVG(hour_diff)
+FROM deliver_time;
 ```
 
 
@@ -52,28 +52,28 @@ FROM DELIVER_TIME
 
 ### Query:
 ```SQL
-WITH USER_ORDER_COUNT AS (
+WITH user_order_count AS (
     SELECT
-        USER_ID
-        , COUNT(DISTINCT ORDER_ID) AS ORDER_COUNT
-    FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__ORDERS
+        user_id
+        , COUNT(DISTINCT order_id) AS order_count
+    FROM dev_db.dbt_willgyorikraftheinzcom.stg_postgres__orders
     GROUP BY ALL
 )
 
 SELECT
     SUM(CASE 
-        WHEN ORDER_COUNT = 1 THEN 1
+        WHEN order_count = 1 THEN 1
         ELSE 0
-    END) AS ORDER_COUNT_1
+    END) AS order_count_1
     , SUM(CASE 
-        WHEN ORDER_COUNT = 2 THEN 1
+        WHEN order_count = 2 THEN 1
         ELSE 0
-    END) AS ORDER_COUNT_2
+    END) AS order_count_2
     , SUM(CASE 
-        WHEN ORDER_COUNT > 2 THEN 1
+        WHEN order_count > 2 THEN 1
         ELSE 0
-    END) AS ORDER_COUNT_MORE_2
-FROM USER_ORDER_COUNT
+    END) AS order_count_more_2
+FROM user_order_count;
 ```
 
 
@@ -82,15 +82,15 @@ FROM USER_ORDER_COUNT
 
 ### Query:
 ```SQL
-WITH HOURLY_SESSION_COUNT AS (
+WITH hourly_session_count AS (
 
     SELECT 
-        DATE_TRUNC(HOUR, CREATED_AT) AS HOUR
-        , COUNT(DISTINCT SESSION_ID) AS SESSION_COUNT
-    FROM DEV_DB.DBT_WILLGYORIKRAFTHEINZCOM.STG_POSTGRES__EVENTS
+        DATE_TRUNC(hour, created_at) AS hour
+        , COUNT(DISTINCT session_id) AS session_count
+    FROM dev_db.dbt_willgyorikraftheinzcom.stg_postgres__events
     GROUP BY ALL
 )
 
-SELECT AVG(SESSION_COUNT)
-FROM HOURLY_SESSION_COUNT
+SELECT AVG(session_count)
+FROM hourly_session_count;
 ```

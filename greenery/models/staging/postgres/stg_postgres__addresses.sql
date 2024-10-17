@@ -5,9 +5,9 @@
 }}
 
 SELECT
-    ADDRESS_ID
-    , ADDRESS
-    , ZIPCODE
-    , STATE
-    , COUNTRY
+    address_id
+    , address
+    , zipcode
+    , state
+    , country
 FROM {{source('postgres', 'addresses')}}

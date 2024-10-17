@@ -5,8 +5,8 @@
 }}
 
 SELECT
-   PRODUCT_ID
-   , NAME
-   , PRICE
-   , INVENTORY
+   product_id
+   , name
+   , price
+   , inventory
 FROM {{source('postgres', 'products')}}
