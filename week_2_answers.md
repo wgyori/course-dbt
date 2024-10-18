@@ -30,6 +30,7 @@ FROM user_order_count;
 #### - Seeing if users are saving pages, sending links, or posting the links on social media could be good indicators they are likely to purchase again or soon in the future
 #### - Using existing data, we could measure how many times a user has viewed a product page. The more the view it, the more likely they are to purchase at some point soon
 
+
 ## Question: Explain the product mart models you added. Why did you organize the models in the way you did?
 ### Answer:
 #### - int_daily_product_orders: Merges order and orders and order_items table to count the average daily orders. It is then referenced by fact_product_conversion_rate table to calculate conversion rate by product (orders/views)
@@ -39,15 +40,19 @@ FROM user_order_count;
 #### - fact_product_daily_views: Merges intermediate tables to calculate the daily page views by product
 #### - fact_product_promo: Merges staging tables to show how many promo codes have been applied to each product, and what is the total amount of promotional savings tied to each product
 
+
 # Part 2. Tests
 ## Question: What assumptions are you making about each model? (i.e. why are you adding each test?)
 ### Answer: I'm assuming each primary key is not null and unique. I'm also assuming value fields like quantity and price are positive values. And lastly, I'm assuming the promo code status can only ever be "active" or "inactive"
 
+
 ## Question: Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
 ### Answer: No bad data on the tests I ran. I was just initally wrong on my assumption that because order_id is primary key on order_items tabe, it would be unique. However, there are multiple rows of same order_id in that table because the same order_id will be repeated if there are multiple products on the same order, which makes sense. Therefore, I removed the unique test for that column
 
+
 ## Question: Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
 ### Answer: I would make sure the tests are run each day and set up an alert any time one of the tests failed. Making sure we can catch the issue before the data makes its way into our production BI tools
+
 
 # Part 3. Snapshots
 ## Question: Which products had their inventory change from week 1 to week 2? 
