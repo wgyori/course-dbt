@@ -43,17 +43,21 @@ FROM user_order_count;
 
 # Part 2. Tests
 ## Question: What assumptions are you making about each model? (i.e. why are you adding each test?)
-### Answer: I'm assuming each primary key is not null and unique. I'm also assuming value fields like quantity and price are positive values. And lastly, I'm assuming the promo code status can only ever be "active" or "inactive"
+### Answer: 
+#### I'm assuming each primary key is not null and unique. I'm also assuming value fields like quantity and price are positive values. And lastly, I'm assuming the promo code status can only ever be "active" or "inactive"
 
 
 ## Question: Did you find any “bad” data as you added and ran tests on your models? How did you go about either cleaning the data in the dbt model or adjusting your assumptions/tests?
-### Answer: No bad data on the tests I ran. I was just initally wrong on my assumption that because order_id is primary key on order_items tabe, it would be unique. However, there are multiple rows of same order_id in that table because the same order_id will be repeated if there are multiple products on the same order, which makes sense. Therefore, I removed the unique test for that column
+### Answer: 
+#### No bad data on the tests I ran. I was just initally wrong on my assumption that because order_id is primary key on order_items tabe, it would be unique. However, there are multiple rows of same order_id in that table because the same order_id will be repeated if there are multiple products on the same order, which makes sense. Therefore, I removed the unique test for that column
 
 
 ## Question: Your stakeholders at Greenery want to understand the state of the data each day. Explain how you would ensure these tests are passing regularly and how you would alert stakeholders about bad data getting through.
-### Answer: I would make sure the tests are run each day and set up an alert any time one of the tests failed. Making sure we can catch the issue before the data makes its way into our production BI tools
+### Answer:
+#### I would make sure the tests are run each day and set up an alert any time one of the tests failed. Making sure we can catch the issue before the data makes its way into our production BI tools
 
 
 # Part 3. Snapshots
 ## Question: Which products had their inventory change from week 1 to week 2? 
-### Answer: Pothos (40 -> 20), Philodendron (51 -> 25), Monstera (77 -> 64), and String of pearls (58 -> 10) all had their inventory change
+### Answer: 
+#### Pothos (40 -> 20), Philodendron (51 -> 25), Monstera (77 -> 64), and String of pearls (58 -> 10) all had their inventory change
