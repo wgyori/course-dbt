@@ -3,15 +3,81 @@ version: 2
 models:
     - name: stg_postgres__events
       description: "Browser events done by users"
+      columns:
+      - name: event_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+    
     - name: stg_postgres__products
       description: "Products and their price and current inventory"
+      columns:
+      - name: product_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: price
+        description: "The price of each product"
+        data_tests:
+          - positive_values
+    
     - name: stg_postgres__order_items
       description: "Orders and qty of product purchased"
+      columns:
+      - name: order_id
+        description: "The primary key for this table"
+        data_tests:
+          - not_null
+      - name: quantity
+        description: "The quantity of each product ordered"
+        data_tests:
+          - positive_values
+    
     - name: stg_postgres__promos
       description: "Promotional discount details"
+      columns:
+      - name: promo_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Whether promo code is active or inactive"
+        data_tests:
+          - accepted_values:
+              values:
+                - active
+                - inactive
+    
     - name: stg_postgres__addresses
       description: "Addresses of each user"
+      columns:
+      - name: address_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+    
     - name: stg_postgres__users
       description: "User contact details"
+      columns:
+      - name: user_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+    
     - name: stg_postgres__orders
       description: "Fact table containing order details"
+      columns:
+      - name: order_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: order_total
+        description: "The primary key for this table"
+        data_tests:
+          - positive_values
