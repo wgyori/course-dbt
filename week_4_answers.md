@@ -14,7 +14,7 @@
 | ZZ Plant         | 53         | 41         |
 
 ## Question 2 : Which products had the most fluctuations in inventory? Did we have any items go out of stock in the last 3 weeks? 
-### Answer: Four products changed inventory every week, and two products changed inventory every week but week 2. All other products stayed constant. Pothos ans String of Pearls both hit 0 inventory in week 3, but got restocked in week 4
+### Answer: Four products changed inventory every week, and two products changed inventory every week but week 2. All other products stayed constant. Pothos and String of Pearls both hit 0 inventory in week 3, but got restocked in week 4
 
 | NAME             | WEEK_1_INV | WEEK_2_INV | WEEK_3_INV | WEEK_4_INV | INV_FLUCTUATION |
 |------------------|------------|------------|------------|------------|-----------------|
@@ -72,7 +72,7 @@ GROUP BY ALL
 
 # Part 2 - Modeling challenge
 ## Question 1 : How are our users moving through the product funnel?
-### Answer: fact_product_events model created to measure for each product session, how the user progressed down the funnel. We can use this fact table to do further analysis in a BI tool 
+### Answer: fact_product_events model was created to measure how the user progressed down the funnel for each product session. We can use this fact table to do further analysis in a BI tool 
 
 ### Query:
 ```SQL
@@ -122,7 +122,7 @@ SELECT
 FROM dev_db.dbt_willgyorikraftheinzcom.fact_product_events AS product_events
 ```
 
-### Answer2 : At an product level, below table shows the highest and lowest conversion rates for each step. The Cart->Checkout and Checkout->Ship setps are probably less valuable at a product level, since the user experience should be relatively the same between products. However, the view->cart step could have a much bigger variance by product from UI/UX perspective. So I would start my analysis there and see why a product like Pothos is performing much worse than a product like String of Pearls 
+### Answer2 : At a product level, below table shows the highest and lowest conversion rates for each step. The Cart->Checkout and Checkout->Ship steps are probably less valuable at a product level, since the user experience should be relatively the same between products. However, the view->cart step could have a much bigger variance by product from UI/UX perspective. So I would start my analysis there and see why a product like Pothos is performing much worse than a product like String of Pearls 
 
 | Step             | Highest                         | Lowest                   |
 |------------------|---------------------------------|--------------------------|
